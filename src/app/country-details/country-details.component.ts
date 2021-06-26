@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { Location } from '@angular/common';
+import { ModeService } from '../mode.service';
 
 @Component({
   selector: 'app-country-details',
@@ -9,17 +11,26 @@ import { ApiService } from '../api.service';
 })
 export class CountryDetailsComponent implements OnInit {
   name: string;
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
-
-  ngOnInit(): void {
+  country: any = {};
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private location: Location,
+    public modeService: ModeService
+  ) {
     this.route.params.subscribe((params: Params) => {
       this.name = params['id'];
       console.log(this.name);
       this.apiService.getCountryDetails(this.name).subscribe((data) => {
         console.log(data);
+        this.country = data[0];
       });
     });
   }
 
-  goBack() {}
+  ngOnInit(): void {}
+
+  goBack() {
+    this.location.back();
+  }
 }

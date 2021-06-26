@@ -8,11 +8,11 @@
         <div class="filters d-flex">
             <div class="d-flex search-box">
                 <mat-icon class="color-black">search</mat-icon>
-                <input type="text" [(ngModel)]="searchText" (keyup)="keyUp.next($event)" class="search-text" placeholder="Search Country.." />
+                <input type="text" [(ngModel)]="searchText" (keyup)="keyUp.next($event)" class="search-text" placeholder="Search for a country.." />
             </div>
 
             <mat-form-field appearance="fill">
-                <mat-label>Filter by region</mat-label>
+                <mat-label>Filter by Region</mat-label>
                 <mat-select [(ngModel)]="filterOption" (selectionChange)="onOptionSelect()">
                     <mat-option *ngFor="let conti of conts" [value]="conti">
                         {{ conti }}
