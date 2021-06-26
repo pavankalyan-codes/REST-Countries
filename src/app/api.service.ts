@@ -10,7 +10,16 @@ export class ApiService {
   url = 'https://restcountries.eu/rest/v2/all';
   constructor(private http: HttpClient) {}
 
+  countryUrl(country) {
+    return `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;
+  }
+
+  getCountryDetails(country) {
+    return this.http.get(this.countryUrl(country));
+  }
+
   getCountries() {
+    //console.log(this.countryUrl('india'));
     return this.http.get(this.url).pipe(
       map((res: any) => {
         //console.log(res);

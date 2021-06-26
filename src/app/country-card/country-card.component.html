@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="emitCountryName()">
     <div class="flag">
         <img class="flag-img" [src]="country.flag" alt="" />
     </div>
@@ -6,7 +6,7 @@
         <h2>{{ country.name }}</h2>
         <p>
             <span class="fnw-bold">Population:</span
-      ><span class="data-value">{{ country.population }}</span>
+      ><span class="data-value">{{ country.population | number: "2." }}</span>
         </p>
         <p>
             <span class="fnw-bold">Region:</span

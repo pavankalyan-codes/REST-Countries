@@ -1,22 +1,29 @@
-<section>
-    <div class="filters d-flex">
-        <div class="d-flex search-box">
-            <mat-icon>search</mat-icon>
-            <input type="text" (input)="onSearchChange($event.target.value)" class="search-text" placeholder="Search Country.." />
+<section [ngClass]="{ 'dark-mode': (modeService.mode$ | async) == 'dark' }">
+    <div class="m-auto p-bar" *ngIf="!contentLoaded">
+        <div class="spinner">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Filter by region</mat-label>
-            <mat-select [(ngModel)]="filterOption" (selectionChange)="onOptionSelect()">
-                <mat-option *ngFor="let conti of conts" [value]="conti">
-                    {{ conti }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
     </div>
-    <div class="countries mt-4">
-        <div *ngFor="let country of countriesPayload">
-            <app-country-card [country]="country"></app-country-card>
+    <div *ngIf="contentLoaded">
+        <div class="filters d-flex">
+            <div class="d-flex search-box">
+                <mat-icon class="color-black">search</mat-icon>
+                <input type="text" [(ngModel)]="searchText" (keyup)="keyUp.next($event)" class="search-text" placeholder="Search Country.." />
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Filter by region</mat-label>
+                <mat-select [(ngModel)]="filterOption" (selectionChange)="onOptionSelect()">
+                    <mat-option *ngFor="let conti of conts" [value]="conti">
+                        {{ conti }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="countries mt-4">
+            <div *ngFor="let country of countriesPayload">
+                <app-country-card [country]="country" (cardClicked)="getCountryDetails($event)"></app-country-card>
+            </div>
         </div>
     </div>
 </section>

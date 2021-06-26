@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Country } from '../country';
 
 @Component({
@@ -8,7 +8,14 @@ import { Country } from '../country';
 })
 export class CountryCardComponent implements OnInit {
   @Input() country: Country;
+
+  @Output() cardClicked: EventEmitter<String> = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  emitCountryName() {
+    this.cardClicked.emit(this.country.name);
+  }
 }

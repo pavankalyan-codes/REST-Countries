@@ -9,6 +9,10 @@ body {
     margin: 0;
 }
 
+.mat-progress-bar-buffer {
+    background-color: #e7e1e3;
+}
+
 .mat-form-field .mat-select-arrow {
     color: black;
 }
@@ -26,3 +30,7 @@ body {
 }
 
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+.dark-mode {
+    background: #1e2c35 !important;
+    color: white !important;
+}

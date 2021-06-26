@@ -27,3 +27,9 @@ i {
     margin-bottom: 3px;
     margin-right: 6px;
 }
+
+@media (max-width: 400px) {
+    header {
+        padding: 10px;
+    }
+}

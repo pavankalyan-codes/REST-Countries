@@ -13,12 +13,19 @@ import { FormsModule } from '@angular/forms';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CountryDetailsComponent } from './country-details/country-details.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
     CountryCardComponent,
+    CountryDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatCardModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    AppRoutingModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
