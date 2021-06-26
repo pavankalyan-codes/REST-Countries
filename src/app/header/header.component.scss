@@ -1,0 +1,29 @@
+header {
+    padding: 10px 50px;
+    box-shadow: 0px 0px 3px 3px #1c1b1b29;
+    align-items: center;
+    z-index: 999;
+    position: relative;
+}
+
+h1 {
+    font-size: 21px;
+    font-weight: 500;
+    margin: 0;
+}
+
+button {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+button>span {
+    display: flex;
+    align-items: center;
+}
+
+i {
+    font-size: 16px;
+    margin-bottom: 3px;
+    margin-right: 6px;
+}
