@@ -1,86 +1,95 @@
-<section [ngClass]="{ 'dark-mode': (modeService.mode$ | async) == 'dark' }">
-  <div>
-    <button (click)="goBack()" mat-button>Back</button>
-  </div>
-
-  <div class="details d-flex">
-    <div class="sec-1">
-      <img [src]="country.flag" alt="" />
+<section *ngIf="!contentLoaded">
+    <mat-spinner></mat-spinner>
+</section>
+<section *ngIf="contentLoaded" [ngClass]="{ 'dark-mode': (modeService.mode$ | async) == 'dark' }">
+    <div>
+        <button (click)="goBack()" mat-button>Back</button>
     </div>
-    <div class="sec2">
-      <div>
-        <h1 class="">{{ country.name }}</h1>
-      </div>
-      <div class="d-flex">
-        <div class="sub1">
-          <div>
-            <span class="prop">Native Name</span>
-            <span class="value">{{ country.nativeName }}</span>
-          </div>
-          <div>
-            <span class="prop">Population</span>
-            <span class="value">{{ country.population }}</span>
-          </div>
-          <div>
-            <span class="prop">Region</span>
-            <span class="value">{{ country.region }}</span>
-          </div>
-          <div>
-            <span class="prop">Sub Region</span>
-            <span class="value">{{ country.subregion }}</span>
-          </div>
-          <div>
-            <span class="prop">Captial</span>
-            <span class="value">{{ country.capital }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sec3">
-      <div class="sub2">
-        <div>
-          <span class="prop">Top Level Domain</span>
-          <span
-            class="value"
-            *ngFor="let domain of country.topLevelDomain; let last = last"
-            ><span>{{ last ? domain : domain + ", " }}</span>
-          </span>
-        </div>
-        <div>
-          <span class="prop">Currencies</span>
-          <span
-            class="value"
-            *ngFor="let curr of country.currencies; let last = last"
-            ><span>{{ last ? curr.name : curr.name + ", " }}</span>
-          </span>
-        </div>
-        <div>
-          <span class="prop">Languages</span>
-          <span
-            class="value"
-            *ngFor="let lang of country.languages; let last = last"
-            ><span>{{ last ? lang.name : lang.name + ", " }}</span>
-          </span>
-        </div>
 
-        <div>
-          <span class="prop">Calling Codes</span>
-          <span
-            class="value"
-            *ngFor="let code of country.callingCodes; let last = last"
-            ><span>{{ last ? code : code + ", " }}</span>
-          </span>
+    <div class="details d-flex">
+        <div class="sec-1">
+            <img [src]="country.flag" alt="" />
         </div>
+        <div class="sec2">
+            <div>
+                <h1 class="">{{ country.name }}</h1>
+            </div>
+            <div class="d-flex">
+                <div class="sub1">
+                    <div>
+                        <span class="prop">Native Name</span>
+                        <span class="value">{{ country.nativeName }}</span>
+                    </div>
+                    <div>
+                        <span class="prop">Population</span>
+                        <span class="value">{{ country.population }}</span>
+                    </div>
+                    <div>
+                        <span class="prop">Region</span>
+                        <span class="value">{{ country.region }}</span>
+                    </div>
+                    <div>
+                        <span class="prop">Sub Region</span>
+                        <span class="value">{{ country.subregion }}</span>
+                    </div>
+                    <div>
+                        <span class="prop">Captial</span>
+                        <span class="value">{{ country.capital }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sec3">
+            <div class="sub2">
+                <div>
+                    <span class="prop">Top Level Domain</span>
+                    <span class="value">
+            <span
+              class="value"
+              *ngFor="let domain of country.topLevelDomain; let last = last"
+              ><span>{{ last ? domain : domain + ", " }}</span>
+                    </span>
+                    </span>
+                </div>
+                <div>
+                    <span class="prop">Currencies</span>
+                    <span class="value">
+            <span
+              class="value"
+              *ngFor="let curr of country.currencies; let last = last"
+              ><span>{{ last ? curr.name : curr.name + ", " }}</span>
+                    </span>
+                    </span>
+                </div>
+                <div>
+                    <span class="prop">Languages</span>
+                    <span class="value">
+            <span *ngFor="let lang of country.languages; let last = last"
+              ><span>{{ last ? lang.name : lang.name + ", " }}</span>
+                    </span>
+                    </span>
+                </div>
 
-        <div>
-          <span class="prop">Timezones</span>
-          <span
-            class="value"
-            *ngFor="let time of country.timezones; let last = last"
-            ><span>{{ last ? time : time + ", " }} </span>
-          </span>
+                <div>
+                    <span class="prop">Calling Codes</span>
+                    <span class="value">
+            <span *ngFor="let code of country.callingCodes; let last = last"
+              ><span>{{ last ? code : code + ", " }}</span>
+                    </span>
+                    </span>
+                </div>
+
+                <div>
+                    <span class="prop">Timezones</span>
+                    <span class="value">
+            <span
+              class="value"
+              *ngFor="let time of country.timezones; let last = last"
+              ><span>{{ last ? time : time + ", " }} </span>
+                    </span>
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

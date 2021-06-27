@@ -11,6 +11,7 @@ import { ModeService } from '../mode.service';
 })
 export class CountryDetailsComponent implements OnInit {
   name: string;
+  contentLoaded: boolean = false;
   country: any = {};
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +25,7 @@ export class CountryDetailsComponent implements OnInit {
       this.apiService.getCountryDetails(this.name).subscribe((data) => {
         console.log(data);
         this.country = data[0];
+        this.contentLoaded = true;
       });
     });
   }
